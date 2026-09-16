@@ -82,7 +82,7 @@ Issue Templateの変更なら、変更前後の項目名・選択肢が分かる
 ## セルフチェック
 
 - [ ] YAMLの構文エラーがない（インデント・`-` の位置・引用符を確認した）
-- [ ] `bug_report.yaml` と `feature_request.yaml` の共通項目（`target-feature` の選択肢など）がそろっている
+- [ ] `bug_report.yaml` と `feature_request.yaml` の共通項目（`target-category` の選択肢など）がそろっている
 - [ ] 説明文で案内している選択肢（例：「わからない・全体のこと」）が実際に `options` に存在する
 - [ ] テンプレートで指定したラベルがリポジトリに存在する
 - [ ] `id` を変更・削除した場合、それを参照している自動化やProjectの設定を確認した
