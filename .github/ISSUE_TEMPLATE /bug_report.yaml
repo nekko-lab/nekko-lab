@@ -1,0 +1,104 @@
+name: バグ報告
+description: 「本来できるはずのこと」ができない・表示や動きがおかしいときはこちら
+title: "[バグ] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## どちらを選べばよいか迷ったら
+
+        - **本来できるはずのことが、できない・おかしい** → こちらの「バグ報告」でOKです
+        - **今できないことを、できるようにしてほしい** → 「新機能・改良要望」を選んでください
+
+  - type: dropdown
+    id: target-feature
+    attributes:
+      label: どの機能で起きましたか
+      description: 一番近いものを1つ選んでください。分からない場合は「わからない・全体のこと」で構いません。
+      options:
+        - pvectl --options
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 起きたこと
+      description: 実際に画面で起きたことを書いてください。エラーメッセージが出た場合は、その文言をそのまま貼ってください。
+      placeholder: |
+        例）
+        Lv3ステップマップで保存ボタンを押したら、画面の上に赤い帯で「保存に失敗しました」と表示され、
+        入力した内容が消えてしまいました。
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 本来どうなるはずだと思いましたか
+      description: 「こうなると思っていた」という期待を書いてください。
+      placeholder: |
+        例）
+        保存ボタンを押したら「保存しました」と表示され、次に開いたときも入力内容が残っているはずでした。
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 同じことが起きるまでの手順
+      description: 上から順に、番号を付けて書いてください。途中まででも構いません。
+      placeholder: |
+        例）
+        1. ターミナルを開いてpvectlをdryで実行
+        2. 問題なく実行が完了する
+        3. ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: どのくらいの頻度で起きますか
+      options:
+        - 毎回起きる
+        - ときどき起きる
+        - 一度だけ起きた
+    validations:
+      required: true
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: 作業への影響
+      options:
+        - 作業が止まる（先に進めない・データが失われる）
+        - 回避策はあるが手間がかかる
+        - 軽微（見た目の乱れなど、作業は続けられる）
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: スクリーンショット（任意）
+      description: この枠に画像をドラッグ＆ドロップすると添付できます。エラー表示や、おかしくなっている画面が写っていると助かります。
+      placeholder: ここに画像をドラッグ＆ドロップしてください。
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: 発生日時・使っていた環境（任意）
+      description: 分かる範囲で構いません。「いつ」「どのパソコン・ブラウザで」が分かると調査が早くなります。
+      placeholder: |
+        例）
+        - 発生日時: 2026年8月20日 14時ごろ
+        - パソコン: 私物のWindowsノート
+        - ブラウザ: Google Chrome
+        - 画面のアドレス（URL）: https:/***
+    validations:
+      required: false
