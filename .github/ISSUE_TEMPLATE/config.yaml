@@ -1,1 +1,8 @@
 blank_issues_enabled: false
+contact_links:
+  - name: 質問・相談（Discord）
+    url: https://discord.com/  # TODO: サークルのDiscordチャンネルのURL
+    about: 要望・不具合・タスクではない質問や相談はDiscordへどうぞ
+  - name: GitHub Project（Nekko Cloud）
+    url: https://github.com/orgs/nekko-lab/projects/  # TODO: Projectの番号
+    about: 進行中の開発・運用保守の状況はこちらで確認できます
