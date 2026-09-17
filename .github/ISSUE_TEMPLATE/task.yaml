@@ -1,0 +1,113 @@
+name: タスク（開発・運用保守）
+description: 計画的に進める開発作業・運用保守作業を登録するときはこちら（主に運営・開発メンバー向け）
+title: "[タスク] "
+labels:
+  - task
+# Issue作成時にProjectへ自動追加する場合は、番号を実際のものにして有効化してください。
+# ※Projectへの書き込み権限がない人が作成した場合は追加されません。
+# projects:
+#   - nekko-lab/1
+body:
+  - type: markdown
+    attributes:
+      value: |
+        開発・運用保守で「やること」が決まっている作業を登録します。
+        要望や不具合の報告は「新機能・改良要望」「バグ報告」を使ってください。
+
+        **作成後、Projectで「Start date」「Target date」を設定してください。**日付がないとガントチャート（Roadmap）に表示されません。
+
+  - type: dropdown
+    id: track
+    attributes:
+      label: 種別
+      options:
+        - 開発（新規構築・機能追加・改修）
+        - 運用保守（定期作業・更新・メンテナンス）
+        - 障害対応・事後対応
+        - 調査・検証
+        - ドキュメント整備
+    validations:
+      required: true
+
+  - type: dropdown
+    id: target-category
+    attributes:
+      label: 分野
+      options:
+        - 仮想化基盤（Proxmox VE/Backup Server・Kubernetes）
+        - ネットワーク
+        - Webサービス・Webサイト
+        - Discord Bot
+        - 監視・ログ・運用
+        - GitHub（リポジトリ・Project・Actions）
+        - ドキュメント・Wiki
+        - 横断・全体
+    validations:
+      required: true
+
+  - type: input
+    id: repositories
+    attributes:
+      label: 作業するリポジトリ（任意）
+      description: 複数ある場合はカンマ区切りで書いてください。
+      placeholder: 例）nekko-lab/pvectl, nekko-lab/infra
+    validations:
+      required: false
+
+  - type: textarea
+    id: background
+    attributes:
+      label: 背景・目的
+      description: なぜこの作業が必要かを書いてください。元になったIssueがあれば番号を書いてください。
+      placeholder: |
+        例）
+        #12 の要望を受けて、pvectlにマイグレーションの一括実行機能を追加する。
+    validations:
+      required: true
+
+  - type: textarea
+    id: todo
+    attributes:
+      label: やること
+      description: チェックリストで書いてください。大きな作業は、ここではなくSub-issueに分けてください。
+      value: |
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+
+  - type: textarea
+    id: done-criteria
+    attributes:
+      label: 完了条件
+      description: 何ができたら「完了」とするかを、第三者が確認できる形で書いてください。
+      placeholder: |
+        例）
+        - `pvectl migrate 100 101 102 --target pve02` で3台が移行できる
+        - READMEに使い方が追記されている
+    validations:
+      required: true
+
+  - type: textarea
+    id: ops-impact
+    attributes:
+      label: サービスへの影響・作業時の注意（任意）
+      description: 停止時間、再起動の有無、影響を受ける利用者、戻し方（ロールバック）などを書いてください。
+      placeholder: |
+        例）
+        - pve01を再起動するため、上で動くVMが約10分停止する
+        - 作業前にPBSでバックアップを取得する
+    validations:
+      required: false
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: 依存関係・関連Issue（任意）
+      description: 先に終わっている必要があるIssueや、関連するIssue・PRを書いてください。
+      placeholder: |
+        例）
+        - 先行: #20（Ceph検証環境の構築）
+        - 関連: nekko-lab/pvectl#5
+    validations:
+      required: false
